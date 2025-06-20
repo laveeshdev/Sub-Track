@@ -1,9 +1,12 @@
 import express from 'express';
-import PORT from './config/env.js' ;
+import {PORT} from './config/env.js' ;
+import connectionToDatabase from './database/mongodb.js';
+
 
 import userRouter from './routes/user.routes.js';
 import authRouter from './routes/auth.routes.js';
 import subscriptionRouter from './routes/subscription.routes.js';
+// import { connection } from 'mongoose';
 
 const app = express() ; 
 
@@ -17,6 +20,13 @@ app.get('/', (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`sub-track is running on http://localhost:${PORT}`);
+    connectionToDatabase()
+        .then(() => {
+            console.log('Connected to MongoDB successfully');
+        })
+        .catch((error) => {
+            console.error('Failed to connect to MongoDB:', error);
+        });
 }) ;
 
 export default app;

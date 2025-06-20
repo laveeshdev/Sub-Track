@@ -2,5 +2,5 @@ import {config} from 'dotenv' ;
 
 config({path : `.env.${process.env.NODE_ENV || 'development'}.local`}) ; 
 
-const {PORT , NODE_ENV , DB_URI} = process.env ; 
-export default PORT || 3000 ;
+export const {PORT , NODE_ENV , DB_URI} = process.env ; 
+// export const {PORT , NODE_ENV , DB_URI} ;
