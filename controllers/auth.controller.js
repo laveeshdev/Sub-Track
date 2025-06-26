@@ -79,6 +79,14 @@ export const signIn = async (req, res, next) => {
         const token = jwt.sign({userId : existUser._id}, process.env.JWT_SECRET, {
             expiresIn: '1d' // token will expire in 1 day
         });
+        res.status(200).json({
+            success: true,
+            message: 'Sign in successful!',
+            data: {
+                token,
+                user: existUser
+            }
+        });
         
     } catch (error) {
         next(error)  ; 
