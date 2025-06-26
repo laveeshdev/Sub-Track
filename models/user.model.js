@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
         lowercase: true, // this will convert the email to lowercase
         minLength: [5, 'Email must be at least 5 characters long'],
         maxLength: [100, 'Email must be at most 100 characters long'] ,
-        match : ['^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$', 'Please provide a valid email address']
+        match : [/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/, 'Please provide a valid email address']
     } , 
     password : {
         type : String,
