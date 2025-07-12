@@ -26,5 +26,5 @@ const authorise = async (req, res, next) => {
     }       
 }
 
-// export { authorise };
+
 export default authorise;
